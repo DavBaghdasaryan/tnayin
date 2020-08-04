@@ -56,14 +56,32 @@ class Register extends Component {
                 }
             }
         })
-        console.log(this.state.confirmpassword)
+    }
+
+    handleRegister = e => {
+        e.preventDefault();
+        const name = this.state.name.value
+        const Lastname = this.state.Lastname.value
+        const email = this.state.email.value
+        const password = this.state.password.value
+        let users = localStorage.getItem('users')
+
+        if(!users) {
+            localStorage.setItem('users', JSON.stringify([]));
+        }
+        
+        users = JSON.parse(localStorage.getItem('users'));
+        console.log(users);
+        users.push({name, Lastname, email, password});
+
+        localStorage.setItem('users', JSON.stringify(users));
     }
 
     render() {
         const { name, email, Lastname, password, confirmpassword } = this.state
         return (
             <div className = "register_cont">
-                <form className = "register_form">
+                <form className = "register_form" onSubmit={this.handleRegister}>
                     <input type="text" name='name' placeholder="name" className="form_input"
                         onChange={this.handeOnInputChange}
                         style={
