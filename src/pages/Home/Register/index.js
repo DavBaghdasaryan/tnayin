@@ -1,4 +1,17 @@
 import React, { Component } from 'react'
+import "./register.css"
+
+function validate(thisInp, ThisTxt, password = null) {
+    if (thisInp === "email") {
+        return ThisTxt.includes("@") && ThisTxt.includes(".");
+    } else if (thisInp === "password") {
+        return ThisTxt.length >= 6 ? true : false;
+    } else if (thisInp === "confirmpassword") {
+        return ThisTxt === password;
+    } else {
+        return ThisTxt ? true : false;
+    }
+}
 
 class Register extends Component {
     state = {
@@ -31,26 +44,58 @@ class Register extends Component {
 
     handeOnInputChange = e => {
         const { name, value } = e.target;
+        const validateChecked = validate(name, value, this.state.password.value)
         this.setState(prevState => {
             return {
                 ...prevState,
                 [name]: {
                     ...prevState[name],
-                    value
+                    value,
+                    isTouched: true,
+                    isValid: validateChecked,
                 }
             }
         })
+        console.log(this.state.confirmpassword)
     }
 
     render() {
-        console.log(this.state)
+        const { name, email, Lastname, password, confirmpassword } = this.state
         return (
-            <div>
-                <input name='name' onChange={this.handeOnInputChange} />
-                <input name='Lastname' onChange={this.handeOnInputChange} />
-                <input name='email' onChange={this.handeOnInputChange} />
-                <input name='password' onChange={this.handeOnInputChange} />
-                <input name='confirmpassword' onChange={this.handeOnInputChange} />
+            <div className = "register_cont">
+                <form className = "register_form">
+                    <input type="text" name='name' placeholder="name" className="form_input"
+                        onChange={this.handeOnInputChange}
+                        style={
+                            { border: name.isTouched ? (name.isValid ? "2px solid green" : "2px solid red") : "2px solid gray" }
+                        }
+                    />
+                    <input type="text" name='Lastname' placeholder="Lastname" className="form_input"
+                        onChange={this.handeOnInputChange}
+                        style={
+                            { border: Lastname.isTouched ? (Lastname.isValid ? "2px solid green" : "2px solid red") : "2px solid gray" }
+                        }
+                    />
+                    <input type="email" name='email' placeholder="email" className="form_input"
+                        onChange={this.handeOnInputChange}
+                        style={
+                            { border: email.isTouched ? (email.isValid ? "2px solid green" : "2px solid red") : "2px solid gray" }
+                        }
+                    />
+                    <input type="password" name='password' placeholder="password" className="form_input"
+                        onChange={this.handeOnInputChange}
+                        style={
+                            { border: password.isTouched ? (password.isValid ? "2px solid green" : "2px solid red") : "2px solid gray" }
+                        }
+                    />
+                    <input type="password" name='confirmpassword' placeholder="confirmpassword" className="form_input"
+                        onChange={this.handeOnInputChange}
+                        style={
+                            { border: confirmpassword.isTouched ? (confirmpassword.isValid ? "2px solid green" : "2px solid red") : "2px solid gray" }
+                        }
+                    />
+                    <button className="form_btn">Send</button>
+                </form>
             </div>
 
         )
