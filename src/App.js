@@ -1,22 +1,39 @@
 import React, { Component } from 'react';
-import './index.css' 
+import './index.css'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import Home from './pages/Home'
 import Users from './pages/Users'
 import Nav from './components/Header/Nav'
+import withMobileSize from './withMobileSize'
+import MobilePage from './pages/Mobilepage'
 
 
 class App extends Component {
 
   render() {
+    const { width } = this.props
+    console.log(this.props);
     return (
+
       <Router>
-        <Nav />
-        <Switch>
-        <Route exact path="/" component={Home}></Route>
-          <Route path="/users" component={Users}></Route>
-          <Redirect from="*" to="/" />
-        </Switch>
+        {width > 992 ? (
+          <Nav />
+
+        ):null
+        }
+
+        <div>
+          {width > 992 ? (
+            <Switch>
+              <Route exact path="/" component={Home}></Route>
+              <Route path="/users" component={Users}></Route>
+              <Redirect from="*" to="/" />
+            </Switch>
+          ) : (
+              <MobilePage />
+            )}
+
+        </div>
       </Router>
     )
   }
@@ -26,4 +43,4 @@ class App extends Component {
 
 
 
-export default App;
+export default withMobileSize(App);
