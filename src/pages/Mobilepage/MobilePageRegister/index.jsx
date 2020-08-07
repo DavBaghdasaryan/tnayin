@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import "./register.css"
+
+
 
 function validate(thisInp, ThisTxt, password = null) {
     if (thisInp === "email") {
@@ -13,7 +14,7 @@ function validate(thisInp, ThisTxt, password = null) {
     }
 }
 
-class Registerform extends Component {
+class MobileRegisterform extends Component {
     state = {
         name: {
             value: '',
@@ -123,4 +124,4 @@ class Registerform extends Component {
 
 }
 
-export default Registerform 
+export default MobileRegisterform 

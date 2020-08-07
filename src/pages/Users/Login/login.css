@@ -1,0 +1,27 @@
+.login_cont {
+    margin: 0 auto;
+    width: 300px;
+}
+
+.login_form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form_input {
+    margin-bottom: 10px;
+    padding: 5px 0;
+}
+
+.form_btn {
+    font-size: 15px;
+    font-weight: bold;
+    background-color: rgb(57, 187, 57);
+    color: #000;
+    border: 1px solid black;
+    padding: 5px 0;
+}
+
+.form_btn:hover {
+    cursor: pointer;
+}

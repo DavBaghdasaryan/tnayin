@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import Login from './Login'
+import Loginform from './Login'
 
-class Users extends Component {
+class Login extends Component {
     render() {
         return (
             <div>
-                <h1>Users page</h1>
-                <Login />
+                <Loginform />
             </div>
         )
     }
 }
 
-export default Users
+export default Login

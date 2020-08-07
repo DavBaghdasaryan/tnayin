@@ -7,13 +7,13 @@ class Nav extends Component {
     render() {
         return (
             <nav>
-                <h3>Logo</h3>
+                <h3>Web Page</h3>
                 <ul className='nav-links'>
                     <Link to='/' className='links-style'>
-                    <li>Home</li>
+                    <li>Register</li>
                     </Link>
-                    <Link to='/users' className='links-style'>
-                    <li>Users</li>
+                    <Link to='/login' className='links-style'>
+                    <li>Login</li>
                     </Link>
                 </ul>
             </nav>

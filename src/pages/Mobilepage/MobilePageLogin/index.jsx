@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import './login.css'
-
 
 function validate(thisInp, ThisTxt, password = null) {
     if (thisInp === "email") {
@@ -12,7 +10,7 @@ function validate(thisInp, ThisTxt, password = null) {
     }
 }
 
-class Loginform extends Component {
+class MobileLoginform extends Component {
 
     state = {
         email: {
@@ -91,4 +89,4 @@ class Loginform extends Component {
     }
 }
 
-export default Loginform
+export default MobileLoginform

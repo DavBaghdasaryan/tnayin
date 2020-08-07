@@ -3,6 +3,7 @@ margin: 0;
 }
 
 nav {
+    margin-bottom: 20px;
     padding: 20px 0;
     display: flex;
     justify-content: space-around;

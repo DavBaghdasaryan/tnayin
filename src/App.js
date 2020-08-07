@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import './index.css'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
-import Home from './pages/Home'
-import Users from './pages/Users'
+import Register from './pages/Home'
+import Login from './pages/Users'
 import Nav from './components/Header/Nav'
 import withMobileSize from './withMobileSize'
 import MobilePage from './pages/Mobilepage'
+
 
 
 class App extends Component {
@@ -14,23 +15,24 @@ class App extends Component {
     const { width } = this.props
     console.log(this.props);
     return (
-
       <Router>
-        {width > 992 ? (
-          <Nav />
-
-        ):null
-        }
-
         <div>
+
+          {width > 992 ? (
+            <Nav />
+          ): (
+              null
+            )}
+
           {width > 992 ? (
             <Switch>
-              <Route exact path="/" component={Home}></Route>
-              <Route path="/users" component={Users}></Route>
+              <Route exact path="/" component={Register} />
+              <Route path="/Login" component={Login} />
               <Redirect from="*" to="/" />
             </Switch>
-          ) : (
+          ): (
               <MobilePage />
+              
             )}
 
         </div>
