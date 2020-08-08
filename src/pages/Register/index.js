@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import "./register.css"
+import React, { Component } from 'react';
+import './register.css'
+
 
 function validate(thisInp, ThisTxt, password = null) {
     if (thisInp === "email") {
@@ -13,7 +14,7 @@ function validate(thisInp, ThisTxt, password = null) {
     }
 }
 
-class Registerform extends Component {
+class Register extends Component {
     state = {
         name: {
             value: '',
@@ -44,6 +45,7 @@ class Registerform extends Component {
     }
 
     handeOnInputChange = e => {
+        console.log(this.props);
         const { name, value } = e.target;
         const validateChecked = validate(name, value, this.state.password.value)
         this.setState(prevState => {
@@ -61,6 +63,8 @@ class Registerform extends Component {
 
     handleRegister = e => {
         e.preventDefault();
+        const { history: {push} } = this.props
+
         const name = this.state.name.value
         const Lastname = this.state.Lastname.value
         const email = this.state.email.value
@@ -74,8 +78,9 @@ class Registerform extends Component {
         users = JSON.parse(localStorage.getItem('users'));
         console.log(users);
         users.push({ name, Lastname, email, password });
-
         localStorage.setItem('users', JSON.stringify(users));
+        push('/login')
+
     }
 
     render() {
@@ -123,4 +128,4 @@ class Registerform extends Component {
 
 }
 
-export default Registerform 
+export default Register

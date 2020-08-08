@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import './login.css'
 
 
@@ -12,8 +12,7 @@ function validate(thisInp, ThisTxt, password = null) {
     }
 }
 
-class Loginform extends Component {
-
+class Login extends Component {
     state = {
         email: {
             value: '',
@@ -44,21 +43,20 @@ class Loginform extends Component {
         })
     }
 
+    componentDidMount() {
+        localStorage.removeItem('user')
+    }
 
     handleLogin = e => {
         e.preventDefault()
+        const { history: {push} } = this.props
         let users = JSON.parse(localStorage.getItem('users'))
         const email = this.state.email.value
         const password = this.state.password.value
         users.find(user => {
-            if (user.email === email) {
-                console.log("centra");
-
-            } else {
-                console.log("centr chi");
-            }
-            if (user.password === password) {
-                console.log("centra");
+            if (user.email === email, user.password === password) {
+            localStorage.setItem('user', 'IsLoggedIn')
+            push('/')
             } else {
                 console.log("centr chi");
             }
@@ -91,4 +89,4 @@ class Loginform extends Component {
     }
 }
 
-export default Loginform
+export default Login

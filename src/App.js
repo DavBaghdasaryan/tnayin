@@ -1,11 +1,23 @@
 import React, { Component } from 'react';
 import './index.css'
+
+
+//  Router
+
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
-import Register from './pages/Home'
-import Login from './pages/Users'
-import Nav from './components/Header/Nav'
-import withMobileSize from './withMobileSize'
+
+//  Pages
+import Register from './pages/Register'
+import Login from './pages/Login/index'
+import Home from './pages/Home/index'
 import MobilePage from './pages/Mobilepage'
+import PrivateRoute from './PrivateRoute'
+
+//   Nav
+import Nav from './components/Header/Nav'
+
+//  withMobileSize
+import withMobileSize from './withMobileSize'
 
 
 
@@ -26,8 +38,10 @@ class App extends Component {
 
           {width > 992 ? (
             <Switch>
-              <Route exact path="/" component={Register} />
+              <Route exact path="/register" component={Register} />
               <Route path="/Login" component={Login} />
+              <PrivateRoute path="/" component={Home} />
+
               <Redirect from="*" to="/" />
             </Switch>
           ): (

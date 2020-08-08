@@ -9,7 +9,10 @@ class Nav extends Component {
             <nav>
                 <h3>Web Page</h3>
                 <ul className='nav-links'>
-                    <Link to='/' className='links-style'>
+                <Link to='/' className='links-style'>
+                    <li>Home</li>
+                    </Link>
+                    <Link to='/register' className='links-style'>
                     <li>Register</li>
                     </Link>
                     <Link to='/login' className='links-style'>
