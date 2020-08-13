@@ -12,6 +12,7 @@ import Login from './pages/Login/index'
 import Home from './pages/Home/index'
 import MobilePage from './pages/Mobilepage'
 import PrivateRoute from './PrivateRoute'
+import User from './pages/User'
 
 //   Nav
 import Nav from './components/Header/Nav'
@@ -41,6 +42,7 @@ class App extends Component {
               <Route exact path="/register" component={Register} />
               <Route path="/Login" component={Login} />
               <PrivateRoute path="/" component={Home} />
+              <PrivateRoute path="/user:UserId" component={User} />
 
               <Redirect from="*" to="/" />
             </Switch>

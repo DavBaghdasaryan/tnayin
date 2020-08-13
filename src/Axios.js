@@ -1,28 +1,34 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
+
 
 
 class PersonList extends Component {
-    state = {
-      persons: []
-    }
-  
-    componentDidMount() {
-      axios.get(`https://jsonplaceholder.typicode.com/users`)
-        .then(res => {
-          const persons = res.data;
-          this.setState({ persons });
-        })
-    }
-  
-    render() {
-      return (
-        <ul>
-          { this.state.persons.map(person => <li>{person.name}</li>)}
-        </ul>
-      )
-    }
+  state = {
+    persons: []
   }
 
+  componentDidMount() {
+    axios.get(`https://jsonplaceholder.typicode.com/users`)
+      .then(res => {
+        const persons = res.data;
+        this.setState({ persons });
+      })
+  }
 
-  export default PersonList
+  render() {
+    return (
+      <div>
+        {this.state.persons.map(person => {
+          return <div key={person.id}>
+           <Link to={`/user/${person.id}`}> {person.name}</Link>
+          </div>
+        })}
+      </div>
+    )
+  }
+}
+
+
+export default PersonList
